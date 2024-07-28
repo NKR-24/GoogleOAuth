@@ -17,6 +17,8 @@
      - `GoogleOAuth.demo.redirect_uri`: redirect_uri which is using in demo program
      - `GoogleOAuth.production.redirect_uris`: redirect_uris which is set in GCP console
      - `GoogleOAuth.production.redirect_uri`: redirect_uri which is using in production program
+     - `allowed_domains`: allowed domains
+     - `allowed_emails`: allowed emails
 
    - sample:
 
@@ -32,12 +34,14 @@
                 "https://www.googleapis.com/auth/userinfo.email",
             ]
         production:
-            redirect_uris: ["https://oauthtest-eidnwbgjma-an.a.run.app/oauth2callback"]
-            redirect_uri: "https://oauthtest-eidnwbgjma-an.a.run.app/oauth2callback"
+            redirect_uris: ["https://xxx.a.run.app/oauth2callback"]
+            redirect_uri: "https://xxx.a.run.app/oauth2callback"
             scope:
             [
                 "openid",
                 "https://www.googleapis.com/auth/userinfo.profile",
                 "https://www.googleapis.com/auth/userinfo.email",
             ]
+        allowed_domains: ["example.com"]
+        allowed_emails: ["example@example.com"]
    ```

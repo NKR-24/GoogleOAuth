@@ -17,3 +17,5 @@ GoogleOAuth:
         "https://www.googleapis.com/auth/userinfo.profile",
         "https://www.googleapis.com/auth/userinfo.email",
       ]
+  allowed_domains: ["nkr-group.com"]
+  allowed_emails: []

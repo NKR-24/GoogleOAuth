@@ -11,6 +11,8 @@ class GoogleOAuth:
     def __init__(self, args):
         config_path = os.path.join(os.path.dirname(__file__), "config.yaml")
         config = yaml.safe_load(open(config_path, "r"))
+        self.allowed_domains = config["GoogleOAuth"]["allowed_domains"]
+        self.allowed_emails = config["GoogleOAuth"]["allowed_emails"]
         if args.demo:
             self.config = config["GoogleOAuth"]["demo"]
             os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # localhostでhttpの場合のみ
@@ -62,7 +64,9 @@ class GoogleOAuth:
         user_info.update(self.get_user_info())
         return user_info
 
-    # def access_filter(self, user_info: dict) -> bool:
-    #     if "hd" not in user_info or user_info["hd"] != "nkr-group.com":
-    #         return False
-    #     return True
+    def access_filter(self, user_info: dict) -> bool:
+        if "hd" in user_info and user_info["hd"] in self.allowed_domains:
+            return True
+        if "email" in user_info and user_info["email"] in self.allowed_emails:
+            return True
+        return False
