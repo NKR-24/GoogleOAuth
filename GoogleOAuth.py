@@ -13,9 +13,9 @@ class GoogleOAuth:
         config = yaml.safe_load(open(config_path, "r"))
         self.allowed_domains = config["GoogleOAuth"]["allowed_domains"]
         self.allowed_emails = config["GoogleOAuth"]["allowed_emails"]
+        os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
         if args.demo:
             self.config = config["GoogleOAuth"]["demo"]
-            os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # localhostでhttpの場合のみ
         else:
             self.config = config["GoogleOAuth"]["production"]
         self.client_id = os.getenv("CLIENT_ID")
