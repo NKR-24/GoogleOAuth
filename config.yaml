@@ -9,8 +9,8 @@ GoogleOAuth:
         "https://www.googleapis.com/auth/userinfo.email",
       ]
   production:
-    redirect_uris: ["https://oauthtest-eidnwbgjma-an.a.run.app/oauth2callback"]
-    redirect_uri: "https://oauthtest-eidnwbgjma-an.a.run.app/oauth2callback"
+    redirect_uris: ["https://xxx.a.run.app/oauth2callback"]
+    redirect_uri: "https://xxx.a.run.app/oauth2callback"
     scope:
       [
         "openid",
